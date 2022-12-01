@@ -12,10 +12,11 @@ author: 熊叩
 
 # vue创建一个vue cli项目
 
-```
+
 1.运行一个新项目
-	//hello-world(这个是文件名，可以自己取)
+	```//hello-world(这个是文件名，可以自己取)
 	vue create hello-world
+	```
 2.第二步默认
 
 3.cd到你安装的文件夹
@@ -26,6 +27,7 @@ author: 熊叩
 
 
 5.创建一个组件在components里面新建一个ButtonCounter.vue(新的文件名)
+	```
 	<script>
 	import ButtonCounter from './ButtonCounter.vue'
 
@@ -40,7 +42,7 @@ author: 熊叩
 	  <h1>Here is a child component!</h1>
 	  <ButtonCounter />
 	</template>
-
+```
 6.使用组件 创建在src文件下面
 7.props属性和data是平级的,位置随意调整，created初始化
 	props:["title参数"]
@@ -68,7 +70,7 @@ author: 熊叩
 
 12.只有一行显示多个的时候用flex布局。
 	单个元素用text-align=center,针对行内块级，或者文字，或者行内元素，只能设置在父级上，并且父级有足够的宽度
-```
+
 
 
 
