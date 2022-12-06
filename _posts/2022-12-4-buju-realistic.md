@@ -47,3 +47,17 @@ author: 熊叩
 
 # flex布局
 https://blog.csdn.net/scorpion_V/article/details/125563670
+
+1.2要配合着一起用
+（1.flex :auto 自动铺满剩余的空间
+    2.flex:none  遵循flex布局，但是宽度就是自身元素的所占的宽度）
+
+3.父元素设置高度子元素如果要用一样的，要用height:inherit继承父元素的高度
+
+4.input有默认的padding要去掉
+
+5.    height: calc(100% - 16px);
+    高度等于 父级高度减掉16px
+
+6.<input placeholder="请输入车架号或车名" >placeholder文本框提示
+    outline: 0;外边框 要去掉
