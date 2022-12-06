@@ -18,7 +18,7 @@ import 'font-awesome/css/font-awesome.css'
 <i class="fa fa-camera-retro fa-lg"></i>
 
 
-  # vue-lic脚手架中引入element-plus
+# vue-lic脚手架中引入element-plus
   
   1、 npm install element-plus --save
   2 main.ts
