@@ -31,7 +31,6 @@ import About from '../About.vue'
 import XiongKou from '../XiongKou.vue'
 
 // 2. 定义路由访问地址
-
 const routes = [
   { path: '/home', component: Home },
   { path: '/about', component: About },
@@ -47,7 +46,7 @@ export default router;
 
 ```
 
-3.加载路由组件
+3.在main.js里面加载路由组件
 ```js
 import { createApp } from 'vue'
 import App from './App.vue'
@@ -65,7 +64,7 @@ app.use(router)
 app.mount('#app')
 ```
 
-4.可以使用定义的router了。
+4.在app.vue里面可以使用定义的router了。
 ```
 <template>
   <!-- 加载router跳转后的html,这一句必须写，不然没东西 -->
@@ -85,4 +84,34 @@ export default {
 }
 </script>
 ```
+5.引进element plus
+```
+1.npm install element
+2.main.js里面加入
+	import ElementPlus from 'element-plus'
+	import 'element-plus/dist/index.css'
+	app.use(ElementPlus)
+```
+6.第二点里面有几个path路径我们就要创建几个vue页面
+
+```
+<template>
+//el-button,是引用element ul，npm install element-plus
+  <el-button @click="toXiongkou">我老婆熊叩</el-button>
+</template>
+<script>
+export default {
+  methods: {
+    toXiongkou() {
+	//跳转去哪里的页面
+      this.$router.push("/xiongKou");
+	  
+    },
+  },
+};
+</script>
+```
+
+
+
 
