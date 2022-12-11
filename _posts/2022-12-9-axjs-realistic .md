@@ -63,9 +63,28 @@ http://localhost:8081
 
 
 ```
+第一步再data.json 创建传入得函数
+{   
+    "xiongReport":{
+        "num":12,
+        "shang":200,
+        "shi":100
+    }
+        
+      
+    
+}
+第二步在你需要用的页面
+export default{
+created(){
+//定义个接收函数
+return{
+xiongReport:{};},
 created(){
 //获得权限
 axios.get("http://localhost:8081/list").then(res=>
 {this.xiongReport=res.data;
 });
+}
+第三步就可以在template需要的地方用了{{ xiongReport.num}}
 ```	
