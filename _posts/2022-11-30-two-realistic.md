@@ -76,6 +76,25 @@ author: 熊叩
 	上一级   ../
 14.vue三部曲，先
 
+15.v-if 显示 true隐藏  false
+	v-else
+	v-else-if
+	另一种隐藏和显示的指令是 v-show，这种指令单纯的 display:none 或无；
+	v-modle 绑定文本框
+	 条件判断指令 v-if，可以通过属性的布尔值来决定是否渲染显示html 内容；<div v-if="flag">为 true 方可显示</div>
+	```
+	const dataObj = {
+	flag : true,
+	};
+	```
+	2. 指令可以有参数，之前的 v-on:click 和 v-bind:class 中冒号后面就是参数；3. on 表示触发事件，参数 click 表示单击，所以参数的值必须是DOM 事件方法；4. bind 表示绑定属性，参数 class 表示 HTML 的属性，添加HTML 属性并赋值；5. 当然，2.6.0 新增了动态参数：v-bind:[attrName]，通过数据对象属性赋值；6. 参数后面可以有修饰符，v-on:submit.prevent，后面遇到具体实例再分析；7. v-bind 和 v-on 属性较长，系统提供了缩写方法，具体如下：<!--v-bind 缩写-->
+	```
+	<div :class="color">bind</div>
+	<div :[key]="color">bind</div>
+	<!--v-on 缩写-->
+	<button @click="alert">点击</button>
+	<button @[event]="alert">点击</button>
+	```
 
 
 
