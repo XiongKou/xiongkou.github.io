@@ -28,4 +28,9 @@ vue的结构，属性定义在data里面，methods里面定义的都是方法，
 
 
 ```
-
+# 字符串和常量搞混淆了
+```
+ console.log("http://localhost:8081/baoma/" + this.value);
+ 不能像下面这样写
+  console.log("http://localhost:8081/baoma/+value")
+```
