@@ -110,7 +110,7 @@ flex 大大简化了布局的代码 , 但是他对于低版本的浏览器支持
 
 例如现在要实现一个移动端页面 , 顶部和脚部div固定,内容部分如果超出出现滚动条,如下图
 
-![](https://blogpackage.oss-cn-shenzhen.aliyuncs.com/2023-02-05/css-position-1.png)
+![](https://blogpackage.oss-cn-shenzhen.aliyuncs.com/2023-02-05/css-flex-1.png)
 
 ```html
 <!DOCTYPE html>
