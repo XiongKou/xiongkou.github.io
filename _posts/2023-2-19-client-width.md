@@ -28,26 +28,35 @@ author: 熊叩
 3. window.outerWidth : 浏览器的宽度,包含边框和滚动条
 4. window.screen.width : 显示器的宽度
 
-
-
-
 # clientWidth、scrollWidth、offsetWidth
 
 ![](https://blogpackage.oss-cn-shenzhen.aliyuncs.com/2023-2-19/2.png)
 
-1. clientWidth: 元素内容+内边距-滚动条
-2. scrollWidth: 元素滚动内容+内边距-滚动条
+1. clientWidth: 元素内容+内边距
+2. scrollWidth: 元素滚动内容+内边距
 3. offsetWidth: 元素内容+内边距+元素边框
+
+## 滚动条
+
+当元素里面有滚动条的时候,clientWidth、scrollWidth、affsetWidth计算宽度有如下变化
+
+![](https://blogpackage.oss-cn-shenzhen.aliyuncs.com/2023-2-19/4.png)
+
+1. clientWidth: 元素内容+内边距-滚动条宽度
+2. scrollWidth: 元素滚动内容+内边距-滚动条宽度
+3. offsetWidth: 元素内容+内边距+元素边框
+
+所以我感觉使用offsetWidth时比clientWidth更加准确
 
 ## clientLeft 和 clientTop
 
-* 获得元素的左边框和上边框
+获得元素的左边框和上边框
 
 ## scrollTop 和 scrollLeft
 
-![](https://blogpackage.oss-cn-shenzhen.aliyuncs.com/2023-2-19/3.png)
+![](https://blogpackage.oss-cn-shenzhen.aliyuncs.com/2023-2-19/3.jpg)
 
-* 可以设置当前元素相对于父元素的位置,要记得给对应的父元素设置相对点`position: relative;`
+可以设置当前元素相对于父元素的位置,要记得给对应的父元素设置相对点`position: relative;`
 
 ## offsetLeft 和 offsetTop
 
