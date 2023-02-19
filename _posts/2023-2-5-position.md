@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "css"
+title:  "css定位"
 categories: css 
 tags: css布局
 author: 熊叩
@@ -8,28 +8,7 @@ author: 熊叩
 
 * content
 {:toc}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
 css布局有几种方式: 文档流/绝对定位/漂浮/flex布局 , 在开发功能的时候,大多数都是几种布局组合使用
 
 
