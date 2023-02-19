@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "css"
-categories: css 
-tags: css布局
+title:  "js"
+categories: js 
+tags: js
 author: 熊叩
 ---
 
@@ -11,7 +11,16 @@ author: 熊叩
 
 
 
-css布局有几种方式: 文档流/绝对定位/漂浮/flex布局 , 在开发功能的时候,大多数都是几种布局组合使用
+
+
+
+
+
+
+
+
+
+这篇博客主要记录一下页面中某个元素的各种大小和各种位置的计算方式
 
 
 
