@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "message"
+title:  "js消息提示"
 categories: js
 tags: message
 author: 熊叩

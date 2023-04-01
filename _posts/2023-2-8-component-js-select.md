@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "js封装下拉框"
+title:  "js下拉框"
 categories: js
 tags: select
 author: 熊叩

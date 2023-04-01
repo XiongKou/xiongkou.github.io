@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "js封装日期选择器"
+title:  "js日期选择器"
 categories: js
 tags: date
 author: 熊叩
