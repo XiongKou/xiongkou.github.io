@@ -25,7 +25,58 @@ vue项目如果没有引用其他的组件库,自己写一个组件也是很不�
 
 
 
+# 调用
 
+调用有三种方式
+
+日期和时间的格式
+
+```js
+this.$dateTimeSelect({
+	date: this.form.YJSSDate ? new Date(this.form.YJSSDate.replace(/-/g, '/').padEnd(19, ' 00:00:00')) : new Date(),
+	type: 'datetime',
+	callback: (date) => {
+		this.$set(this.form, 'YJSSDate', date ? formatDate(date) : '');
+	}
+});
+```
+
+效果
+
+![](https://blogpackage.oss-cn-shenzhen.aliyuncs.com/2023-04-01/js-datetime.jpg)
+
+
+日期格式
+
+```js
+this.$dateTimeSelect({
+	date: this.form.YJSSDate ? new Date(this.form.YJSSDate.replace(/-/g, '/').padEnd(19, ' 00:00:00')) : new Date(),
+	type: 'date',
+	callback: (date) => {
+		this.$set(this.form, 'YJSSDate', date ? formatDate(date) : '');
+	}
+});
+```
+
+效果
+
+![](https://blogpackage.oss-cn-shenzhen.aliyuncs.com/2023-04-01/js-date.jpg)
+
+时间格式
+
+```js
+this.$dateTimeSelect({
+	date: this.form.YJSSDate ? new Date(this.form.YJSSDate.replace(/-/g, '/').padEnd(19, ' 00:00:00')) : new Date(),
+	type: 'time',
+	callback: (date) => {
+		this.$set(this.form, 'YJSSDate', date ? formatDate(date) : '');
+	}
+});
+```
+
+效果
+
+![](https://blogpackage.oss-cn-shenzhen.aliyuncs.com/2023-04-01/js-datetime.jpg)
 
 
 # js
@@ -492,57 +543,6 @@ import './plugins/dateTime/index.scss'
 Vue.use(dateTimeSelect);
 `
 
-# 调用
 
-调用有三种方式
-
-日期和时间的格式
-
-```js
-this.$dateTimeSelect({
-	date: this.form.YJSSDate ? new Date(this.form.YJSSDate.replace(/-/g, '/').padEnd(19, ' 00:00:00')) : new Date(),
-	type: 'datetime',
-	callback: (date) => {
-		this.$set(this.form, 'YJSSDate', date ? formatDate(date) : '');
-	}
-});
-```
-
-效果
-
-![](https://blogpackage.oss-cn-shenzhen.aliyuncs.com/2023-04-01/js-datetime.jpg)
-
-
-日期格式
-
-```js
-this.$dateTimeSelect({
-	date: this.form.YJSSDate ? new Date(this.form.YJSSDate.replace(/-/g, '/').padEnd(19, ' 00:00:00')) : new Date(),
-	type: 'date',
-	callback: (date) => {
-		this.$set(this.form, 'YJSSDate', date ? formatDate(date) : '');
-	}
-});
-```
-
-效果
-
-![](https://blogpackage.oss-cn-shenzhen.aliyuncs.com/2023-04-01/js-date.jpg)
-
-时间格式
-
-```js
-this.$dateTimeSelect({
-	date: this.form.YJSSDate ? new Date(this.form.YJSSDate.replace(/-/g, '/').padEnd(19, ' 00:00:00')) : new Date(),
-	type: 'time',
-	callback: (date) => {
-		this.$set(this.form, 'YJSSDate', date ? formatDate(date) : '');
-	}
-});
-```
-
-效果
-
-![](https://blogpackage.oss-cn-shenzhen.aliyuncs.com/2023-04-01/js-datetime.jpg)
 
 

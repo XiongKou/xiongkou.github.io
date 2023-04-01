@@ -19,6 +19,25 @@ author: 熊叩
 
 
 
+# 调用
+
+消息目前只有2种方式 , 正确的提示和错误的提示
+
+```js
+// 正确的提示
+akdAlert("操作成功");
+
+// 错误的提示
+akdError("操作失败,请重试或与管理员联系");
+```
+
+正确的提示
+
+![](https://blogpackage.oss-cn-shenzhen.aliyuncs.com/2023-04-01/message-success.jpg)
+
+错误的提示
+
+![](https://blogpackage.oss-cn-shenzhen.aliyuncs.com/2023-04-01/message-error.png)
 
 # js
 
@@ -163,25 +182,7 @@ author: 熊叩
 
 
 
-# 调用
 
-消息目前只有2种方式 , 正确的提示和错误的提示
-
-```js
-// 正确的提示
-akdAlert("操作成功");
-
-// 错误的提示
-akdError("操作失败,请重试或与管理员联系");
-```
-
-正确的提示
-
-![](https://blogpackage.oss-cn-shenzhen.aliyuncs.com/2023-04-01/message-success.jpg)
-
-错误的提示
-
-![](https://blogpackage.oss-cn-shenzhen.aliyuncs.com/2023-04-01/message-error.png)
 
 
 

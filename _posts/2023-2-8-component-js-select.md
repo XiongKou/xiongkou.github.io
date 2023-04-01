@@ -19,6 +19,81 @@ author: 熊叩
 
 
 
+# 调用
+
+下拉框需要绑定页面的元素,例如我们定义了一个`test-akd-select`的div
+
+```html
+<div id="test-akd-select"></div>
+```
+
+现在给html标签绑定数据
+
+```js
+var select = akdSelect({
+	id: "test-akd-select",
+	placeholder:"请选择部门",
+	selectValue:"1",         // 默认选中的值
+	textField: "CodeName",           // 显示文本字段
+	valueField:"CodeNo",          // 显示value字段
+	array: [{
+		CodeName: "部门1",
+		CodeNo:1
+	}, {
+		CodeName: "部门2",
+		CodeNo: 2
+	}, {
+		CodeName: "部门3",
+		CodeNo: 3
+	}],
+	callback: function (res) {
+		console.log(res);
+	}
+});
+
+// 清空下拉框
+select.clear();
+
+// 重新设置下拉框选项
+var array = [{
+	CodeName: "哈哈1",
+	CodeNo: 1
+}, {
+	CodeName: "哈哈2",
+	CodeNo: 2
+}, {
+	CodeName: "哈哈3",
+	CodeNo: 3
+}];
+select.setOptions(array);
+
+// 设置下拉框的选中的值
+select.setValue(2);
+
+// 设置下拉框禁用
+select.setDisabled();
+
+// 设置下拉框可用
+select.setEnable();
+
+// 获得选中的value值
+select.getValue();
+```
+
+根据实际项目的需要,下拉框做了好几个功能
+
+1. 清空下拉框选项 `select.clear()`
+2. 设置下拉框选项 `select.setOptions(array)`
+3. 设置下拉框的选中的值 `select.setValue(2)`
+4. 禁用下拉框 `select.setDisabled()`
+5. 启用下拉框 `select.setEnable()`
+6. 获得下拉框选中的值 `select.getValue()`
+
+下拉框效果如下
+
+![](https://blogpackage.oss-cn-shenzhen.aliyuncs.com/2023-04-01/js-select.jpg)
+
+
 
 # js
 
@@ -252,84 +327,5 @@ author: 熊叩
     }
 })(window);
 ```
-
-
-
-# 下拉框组件调用
-
-下拉框需要绑定页面的元素,例如我们定义了一个`test-akd-select`的div
-
-```html
-<div id="test-akd-select"></div>
-```
-
-现在给html标签绑定数据
-
-```js
-var select = akdSelect({
-	id: "test-akd-select",
-	placeholder:"请选择部门",
-	selectValue:"1",         // 默认选中的值
-	textField: "CodeName",           // 显示文本字段
-	valueField:"CodeNo",          // 显示value字段
-	array: [{
-		CodeName: "部门1",
-		CodeNo:1
-	}, {
-		CodeName: "部门2",
-		CodeNo: 2
-	}, {
-		CodeName: "部门3",
-		CodeNo: 3
-	}],
-	callback: function (res) {
-		console.log(res);
-	}
-});
-
-// 清空下拉框
-select.clear();
-
-// 重新设置下拉框选项
-var array = [{
-	CodeName: "哈哈1",
-	CodeNo: 1
-}, {
-	CodeName: "哈哈2",
-	CodeNo: 2
-}, {
-	CodeName: "哈哈3",
-	CodeNo: 3
-}];
-select.setOptions(array);
-
-// 设置下拉框的选中的值
-select.setValue(2);
-
-// 设置下拉框禁用
-select.setDisabled();
-
-// 设置下拉框可用
-select.setEnable();
-
-// 获得选中的value值
-select.getValue();
-```
-
-根据实际项目的需要,下拉框做了好几个功能
-
-1. 清空下拉框选项 `select.clear()`
-2. 设置下拉框选项 `select.setOptions(array)`
-3. 设置下拉框的选中的值 `select.setValue(2)`
-4. 禁用下拉框 `select.setDisabled()`
-5. 启用下拉框 `select.setEnable()`
-6. 获得下拉框选中的值 `select.getValue()`
-
-下拉框效果如下
-
-![](https://blogpackage.oss-cn-shenzhen.aliyuncs.com/2023-04-01/js-select.jpg)
-
-
-
 
 

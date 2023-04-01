@@ -25,6 +25,48 @@ html5虽然有日期选择控件,但是低版本的浏览器和移动端都有�
 
 
 
+# 调用
+
+需要先定义文本框,在日期组件的回调事件里面回写数据到文本框
+
+```html
+<p>
+	<input type="text" id="txtDateTime" onclick="testDateTimeClick()" placeholder="测试日期时间" readonly="readonly" />
+</p>
+
+<p>
+	<input type="text" id="txtDate" onclick="testDateClick()" placeholder="测试日期" readonly="readonly" />
+</p>
+
+<script type="text/javascript">
+	function testDateTimeClick(e) {
+		akdTime({
+			date: document.querySelector("#txtDateTime").value,
+			callback: (res)=> {
+				document.querySelector("#txtDateTime").value=res;
+			}
+		})
+	}
+
+	function testDateClick(e) {
+		akdDate({
+			date: document.querySelector("#txtDate").value,
+			callback: (res) => {
+				document.querySelector("#txtDate").value = res;
+			}
+		})
+	}
+</script>
+```
+
+
+日期时间选择器
+
+![](https://blogpackage.oss-cn-shenzhen.aliyuncs.com/2023-04-01/js-datetime.jpg)
+
+日期选择器
+
+![](https://blogpackage.oss-cn-shenzhen.aliyuncs.com/2023-04-01/js-date.jpg)
 
 # js
 
@@ -618,48 +660,6 @@ html5虽然有日期选择控件,但是低版本的浏览器和移动端都有�
 
 
 
-# 调用
-
-需要先定义文本框,在日期组件的回调事件里面回写数据到文本框
-
-```html
-<p>
-	<input type="text" id="txtDateTime" onclick="testDateTimeClick()" placeholder="测试日期时间" readonly="readonly" />
-</p>
-
-<p>
-	<input type="text" id="txtDate" onclick="testDateClick()" placeholder="测试日期" readonly="readonly" />
-</p>
-
-<script type="text/javascript">
-	function testDateTimeClick(e) {
-		akdTime({
-			date: document.querySelector("#txtDateTime").value,
-			callback: (res)=> {
-				document.querySelector("#txtDateTime").value=res;
-			}
-		})
-	}
-
-	function testDateClick(e) {
-		akdDate({
-			date: document.querySelector("#txtDate").value,
-			callback: (res) => {
-				document.querySelector("#txtDate").value = res;
-			}
-		})
-	}
-</script>
-```
-
-
-日期时间选择器
-
-![](https://blogpackage.oss-cn-shenzhen.aliyuncs.com/2023-04-01/js-datetime.jpg)
-
-日期选择器
-
-![](https://blogpackage.oss-cn-shenzhen.aliyuncs.com/2023-04-01/js-date.jpg)
 
 
 
