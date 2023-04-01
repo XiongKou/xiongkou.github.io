@@ -483,7 +483,7 @@ export default dateTimeSelect;
 }
 ```
 
-## 注册
+# 注册
 
 全局注册日期选择器,也就是在main.js里面注册
 
@@ -494,7 +494,7 @@ import './plugins/dateTime/index.scss'
 Vue.use(dateTimeSelect);
 `
 
-## 调用
+# 调用
 
 调用有三种方式
 
