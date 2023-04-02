@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "DOM元素尺寸和位置"
+title:  "dom元素尺寸和位置"
 categories: js 
 tags: dom
 author: 熊叩
