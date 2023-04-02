@@ -2,7 +2,7 @@
 layout: post
 title:  "vue日期选择器"
 categories: vue
-tags: date
+tags: component
 author: 熊叩
 ---
 

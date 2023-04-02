@@ -2,7 +2,7 @@
 layout: post
 title:  "js日期选择器"
 categories: js
-tags: date
+tags: component
 author: 熊叩
 ---
 

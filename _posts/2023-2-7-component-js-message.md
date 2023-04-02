@@ -2,7 +2,7 @@
 layout: post
 title:  "js消息提示"
 categories: js
-tags: message
+tags: component
 author: 熊叩
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title:  "js下拉框"
 categories: js
-tags: select
+tags: component
 author: 熊叩
 ---
 
