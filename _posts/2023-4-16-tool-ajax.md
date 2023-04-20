@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "tool"
+title:  "ajax"
 categories: ajax 
 tags: ajax
 author: 熊叩
