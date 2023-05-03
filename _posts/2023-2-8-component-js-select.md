@@ -99,18 +99,25 @@ select.getValue();
 
 
 ```js
+/**
+ * 下拉框 朱正平 2023/03/30
+ * options.placeholder 下拉框提示信息
+ * options.value 下拉框的选中值
+ * options.disabled 下拉框是否可用
+ * options.array 下拉框绑定列表
+ * options.id 绑定的div
+ * options.callback 选择事件回调
+ **/
 ; (function (app) {
     function AkdSelectClass(options) {
         this.placeholder = options.placeholder||"";     // 文本框提示信息
-        this.selectValue = options.selectValue;     	// 文本框默认选中
-        this.text = options.textField||"text";      	// 文本框的文本值字段 , 默认为 text
-        this.value = options.valueField||"value";   	// 文本框的value值字段, 默认为 value
-        this.disabled = options.disabled;           	// 文本框是否禁用
+        this.selectValue = options.selectValue;     // 文本框默认选中
+        this.text = options.textField||"text";      // 文本框的文本值字段 , 默认为 text
+        this.value = options.valueField||"value";   // 文本框的value值字段, 默认为 value
+        this.disabled = options.disabled;           // 文本框是否禁用
         this.array = options.array;
         this.id = options.id;
         this.callback = options.callback;
-        // 是否显示提示框
-        this.showPop = false;
         // 是否在底部显示
         this.isInBottom = false;
         this.selected = null;
@@ -164,9 +171,19 @@ select.getValue();
                 }
 
                 // 判断是否显示下拉框选项
-                this.showPop = !this.showPop;
-                if (this.showPop) {
+                let display = getComputedStyle(this.optionsDiv, null)["display"];
+                if (display=="none") {
                     this.optionsDiv.style.display = "block";
+
+                    // 如果打开了页面的其他下拉框,需要关闭其他下拉框
+                    let optionsList = document.getElementsByName("akd-option-div");
+                    if (optionsList && optionsList.length > 0) {
+                        for (let i = 0; i < optionsList.length; i++) {
+                            if (optionsList[i] != this.optionsDiv) {
+                                optionsList[i].style.display = "none";
+                            }
+                        }
+                    }
                 } else {
                     this.optionsDiv.style.display = "none";
                 }
@@ -182,8 +199,12 @@ select.getValue();
 
         this.setOptions = function (tempArray) {
             this.array = tempArray;
+            if (this.optionsDiv) {
+                this.optionsDiv.parentNode.removeChild(this.optionsDiv);
+            }
             // 创建下拉框的选项
             this.optionsDiv = document.createElement("div");
+            this.optionsDiv.setAttribute("name","akd-option-div");
             this.optionsDiv.innerHTML = "";
             for (let i = 0; i < this.array.length; i++) {
                 let p = document.createElement("p");

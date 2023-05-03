@@ -192,14 +192,19 @@ html5虽然有日期选择控件,但是低版本的浏览器和移动端都有�
 
         this.setDate = function () {
             this.yearElement.style.transform = 'translateY(' + -1 * this.yearIndex * this.lineHeight + 'px)';
+            this.yearElement.style.webkitTransform = 'translateY(' + -1 * this.yearIndex * this.lineHeight + 'px)';
             this.monthElement.style.transform = 'translateY(' + -1 * this.monthIndex * this.lineHeight + 'px)';
+            this.monthElement.style.webkitTransform = 'translateY(' + -1 * this.monthIndex * this.lineHeight + 'px)';
             this.dayElement.style.transform = 'translateY(' + -1 * this.dayIndex * this.lineHeight + 'px)';
+            this.dayElement.style.webkitTransform = 'translateY(' + -1 * this.dayIndex * this.lineHeight + 'px)';
             this.calcDay();
         }
 
         this.setTime = function () {
             this.hourElement.style.transform = 'translateY(' + -1 * this.hourIndex * this.lineHeight + 'px)';
+            this.hourElement.style.webkitTransform = 'translateY(' + -1 * this.hourIndex * this.lineHeight + 'px)';
             this.minuteElement.style.transform = 'translateY(' + -1 * this.minuteIndex * this.lineHeight + 'px)';
+            this.minuteElement.style.webkitTransform = 'translateY(' + -1 * this.minuteIndex * this.lineHeight + 'px)';
         }
 
         this.initData = function () {
@@ -215,29 +220,32 @@ html5虽然有日期选择控件,但是低版本的浏览器和移动端都有�
         }
 
         this.touchStartHandler = (e) => {
-            stopPro(e);
             const cul = getTarget(e.target, 'ul');
             if (cul) {
                 this.currUL = cul;
             } else {
                 this.currUL = undefined;
             }
+            console.log(this.currUL);
+            e.preventDefault();
+            console.log("touchStart");
         }
 
         this.touchMoveHandler = (e) => {
-            stopPro(e);
             if (!this.currUL) return;
             if (this.preY.y || this.preY.y === 0) {
                 const range = e.touches[0].clientY - this.preY.y;
                 this.currUL.style.transform = 'translateY(' + ((getComputedStyle(this.currUL, null).transform.slice(22, -1) | 0) + range) + 'px)';
+                this.currUL.style.webkitTransform = 'translateY(' + ((getComputedStyle(this.currUL, null).transform.slice(22, -1) | 0) + range) + 'px)';
                 this.speed = range / (new Date().getTime() - this.preY.time);
             }
             this.preY.y = e.touches[0].clientY;
             this.preY.time = new Date().getTime();
+            e.preventDefault();
+            console.log("touchMove");
         }
 
         this.touchEndHandler = (e) => {
-            stopPro(e);
             const type = this.currUL.getAttribute('data-type');
             const curr = getComputedStyle(this.currUL, null).transform.slice(22, -1) | 0;
             const index = Math.min(Math.max(Math.round((curr + this.speed * 150) / this.lineHeight), (this[type + 's'].length - 1) * -1), 0);
@@ -248,13 +256,15 @@ html5虽然有日期选择控件,但是低版本的浏览器和移动端都有�
             }
             scrollTo(curr, target, Math.min(Math.abs(Math.floor(this.speed * 50)), 10), 0, ty => {
                 this.currUL.style.transform = 'translateY(' + ty + 'px)';
+                this.currUL.style.webkitTransform = 'translateY(' + ty + 'px)';
             });
             this.speed = 0;
             this.preY = {};
+            e.preventDefault();
+            console.log("touchEnd");
         }
 
         this.liClickHandler = (dom, e) => {
-            stopPro(e);
             const target = getTarget(e.target, 'li', dom);
             if (target) {
                 if (!target.innerText) return;
@@ -266,8 +276,10 @@ html5虽然有日期选择控件,但是低版本的浏览器和移动端都有�
                 }
                 scrollTo(getComputedStyle(dom, null).transform.slice(22, -1) | 0, -1 * index * this.lineHeight, 10, 0, ty => {
                     this.currUL.style.transform = 'translateY(' + ty + 'px)';
+                    this.currUL.style.webkitTransform = 'translateY(' + ty + 'px)';
                 });
             }
+            e.preventDefault();
         }
 
         this.isStop = function (e, callback) {
@@ -303,16 +315,16 @@ html5虽然有日期选择控件,但是低版本的浏览器和移动端都有�
             this.dayElement.clientWidth;
             //this.dayElement.scrollTop = this.dayIndex * this.lineHeight;
             this.dayElement.style.transform = 'translateY(' + -1 * this.dayIndex * this.lineHeight + 'px)';
+            this.dayElement.style.webkitTransform = 'translateY(' + -1 * this.dayIndex * this.lineHeight + 'px)';
         }
 
         this.clickHandler = (e) => {
-            stopPro(e);
             const target = getTarget(e.target, 'button');
             if (!target) return;
             let dateStr = '';
             switch (target.className) {
                 case 'btn-clear':
-                    this.callback();
+                    this.callback("");
                     this.close();
                     break;
                 case 'btn-cancel':
@@ -329,6 +341,8 @@ html5虽然有日期选择控件,但是低版本的浏览器和移动端都有�
                     this.close();
                     break;
             }
+
+            e.preventDefault();
         }
 
         this.close = function () {
@@ -340,7 +354,7 @@ html5虽然有日期选择控件,但是低版本的浏览器和移动端都有�
             if (typeof date === 'string') {
                 date = new Date(date.replace(/T/g, ' ').replace(/-/g, '/').slice(0, 10));
             }
-            return date.getFullYear() + '/' + (date.getMonth() + 1 + '').padStart(2, 0) + '/' + (date.getDate() + '').padStart(2, 0);
+            return date.getFullYear() + '-' + (date.getMonth() + 1 + '').padStart(2, 0) + '-' + (date.getDate() + '').padStart(2, 0);
         }
 
         function formatFullDate(date) {
@@ -362,7 +376,7 @@ html5虽然有日期选择控件,但是低版本的浏览器和移动端都有�
             hour = hour > 9 ? hour : '0' + hour;
             minute = minute > 9 ? minute : '0' + minute;
             second = second > 9 ? second : '0' + second;
-            return year + '/' + month + '/' + day + ' ' + hour + ':' + minute ;
+            return year + '-' + month + '-' + day + ' ' + hour + ':' + minute ;
         }
 
         function scrollTo(curr, target, time, start, callback) {
@@ -406,7 +420,7 @@ html5虽然有日期选择控件,但是低版本的浏览器和移动端都有�
 
         function stopPro(evt) {
             var e = evt || window.event;
-            window.event ? e.cancelBubble = true : e.stopPropagation();
+            e.preventDefault();
         }
 
         this.initElement = function () {
@@ -464,45 +478,46 @@ html5虽然有日期选择控件,但是低版本的浏览器和移动端都有�
             this.minuteElement = document.querySelector("#akd-date-minute");
             this.footer = document.querySelector("#akd-date-footer");
 
-            this.yearElement.addEventListener("touchstart", this.touchStartHandler, false);
-            this.yearElement.addEventListener("touchmove", this.touchMoveHandler, false);
-            this.yearElement.addEventListener("touchend", this.touchEndHandler, false);
-            this.yearElement.addEventListener("touchcancel", this.touchEndHandler, false);
-            this.yearElement.addEventListener("click", (e) => {
-                this.liClickHandler(this.yearElement, e);
-            }, false);
+            this.yearElement.parentNode.addEventListener("touchstart", this.touchStartHandler, false);
+            this.yearElement.parentNode.addEventListener("touchmove", this.touchMoveHandler, false);
+            this.yearElement.parentNode.addEventListener("touchend", this.touchEndHandler, false);
+            this.yearElement.parentNode.addEventListener("touchcancel", this.touchEndHandler, false);
+            //this.yearElement.addEventListener("click", (e) => {
+            //    this.liClickHandler(this.yearElement, e);
+            //}, false);
 
-            this.monthElement.addEventListener("touchstart", this.touchStartHandler, false);
-            this.monthElement.addEventListener("touchmove", this.touchMoveHandler, false);
-            this.monthElement.addEventListener("touchend", this.touchEndHandler, false);
-            this.monthElement.addEventListener("touchcancel", this.touchEndHandler, false);
-            this.monthElement.addEventListener("click", (e) => {
-                this.liClickHandler(this.monthElement, e);
-            }, false);
+            this.monthElement.parentNode.addEventListener("touchstart", this.touchStartHandler, false);
+            this.monthElement.parentNode.addEventListener("touchmove", this.touchMoveHandler, false);
+            this.monthElement.parentNode.addEventListener("touchend", this.touchEndHandler, false);
+            this.monthElement.parentNode.addEventListener("touchcancel", this.touchEndHandler, false);
+            //this.monthElement.addEventListener("click", (e) => {
+            //    this.liClickHandler(this.monthElement, e);
+            //}, false);
 
-            this.dayElement.addEventListener("touchstart", this.touchStartHandler, false);
-            this.dayElement.addEventListener("touchmove", this.touchMoveHandler, false);
-            this.dayElement.addEventListener("touchend", this.touchEndHandler, false);
-            this.dayElement.addEventListener("touchcancel", this.touchEndHandler, false);
-            this.dayElement.addEventListener("click", (e) => {
-                this.liClickHandler(this.dayElement, e);
-            }, false);
+            this.dayElement.parentNode.addEventListener("touchstart", this.touchStartHandler, false);
+            this.dayElement.parentNode.addEventListener("touchmove", this.touchMoveHandler, false);
+            this.dayElement.parentNode.addEventListener("touchend", this.touchEndHandler, false);
+            this.dayElement.parentNode.addEventListener("touchcancel", this.touchEndHandler, false);
+            //this.dayElement.addEventListener("click", (e) => {
+            //    this.liClickHandler(this.dayElement, e);
+            //    console.log("click");
+            //}, false);
 
-            this.hourElement.addEventListener("touchstart", this.touchStartHandler, false);
-            this.hourElement.addEventListener("touchmove", this.touchMoveHandler, false);
-            this.hourElement.addEventListener("touchend", this.touchEndHandler, false);
-            this.hourElement.addEventListener("touchcancel", this.touchEndHandler, false);
-            this.hourElement.addEventListener("click", (e) => {
-                this.liClickHandler(this.hourElement, e);
-            }, false);
+            this.hourElement.parentNode.addEventListener("touchstart", this.touchStartHandler, false);
+            this.hourElement.parentNode.addEventListener("touchmove", this.touchMoveHandler, false);
+            this.hourElement.parentNode.addEventListener("touchend", this.touchEndHandler, false);
+            this.hourElement.parentNode.addEventListener("touchcancel", this.touchEndHandler, false);
+            //this.hourElement.addEventListener("click", (e) => {
+            //    this.liClickHandler(this.hourElement, e);
+            //}, false);
 
-            this.minuteElement.addEventListener("touchstart", this.touchStartHandler, false);
-            this.minuteElement.addEventListener("touchmove", this.touchMoveHandler, false);
-            this.minuteElement.addEventListener("touchend", this.touchEndHandler, false);
-            this.minuteElement.addEventListener("touchcancel", this.touchEndHandler, false);
-            this.minuteElement.addEventListener("click", (e) => {
-                this.liClickHandler(this.minuteElement, e);
-            }, false);
+            this.minuteElement.parentNode.addEventListener("touchstart", this.touchStartHandler, false);
+            this.minuteElement.parentNode.addEventListener("touchmove", this.touchMoveHandler, false);
+            this.minuteElement.parentNode.addEventListener("touchend", this.touchEndHandler, false);
+            this.minuteElement.parentNode.addEventListener("touchcancel", this.touchEndHandler, false);
+            //this.minuteElement.addEventListener("click", (e) => {
+            //    this.liClickHandler(this.minuteElement, e);
+            //}, false);
 
             this.footer.addEventListener("click", this.clickHandler, false);
         }
@@ -520,6 +535,8 @@ html5虽然有日期选择控件,但是低版本的浏览器和移动端都有�
                         top: 0;
                         width: 0;
                         height: 0;
+                        cursor: pointer;
+                        pointer-events: none;
                     }
                     #date-time-select-box .fade-form-large-enter-active, #date-time-select-box .fade-form-large-leave-active {
                       transition: all .3s ease;
@@ -538,9 +555,13 @@ html5虽然有日期选择控件,但是低版本的浏览器和移动端都有�
                       top: 0;
                       height: 100%;
                       display: flex;
+                      display: -webkit-flex;
                       align-items: center;
+                      -webkit-align-items: center;
                       justify-content: center;
+                      -webkit-justify-content: center;
                       background-color: rgba(0, 0, 0, .5);
+                      pointer-events: auto;
                     }
 
                     #date-time-select-box .date-time-select .date-time-pop{
@@ -554,7 +575,9 @@ html5虽然有日期选择控件,但是低版本的浏览器和移动端都有�
                         margin-top: 20px;
                           position: relative;
                           display: flex;
+                          display: -webkit-flex;
                           justify-content: space-around;
+                          -webkit-justify-content:space-around;
                           height: 150px;
                           overflow: hidden;
                     }
@@ -578,6 +601,7 @@ html5虽然有日期选择控件,但是低版本的浏览器和移动端都有�
                         overflow: hidden;
                         margin: 0;
                         padding: 0;
+                        pointer-events: auto;
                     }
 
                     .date-time-select .date-time-pop .date-select>div:before {
@@ -607,16 +631,18 @@ html5虽然有日期选择控件,但是低版本的浏览器和移动端都有�
                       height: 100%;
                       text-align: center;
                       line-height: 50px;
-                      
+                      pointer-events: auto;
                     }
                     .date-time-select .date-time-pop .date-select>div ul li{
                         height: 50px;
+                        pointer-events: auto;
                     }
 
                     #date-time-select-box .akd-date-footer{
                         margin-top: 20px;
                         display: flex;
                         justify-content: space-between;
+                        -webkit-justify-content: space-around;
                     }
 
                     #date-time-select-box .akd-date-footer button{
