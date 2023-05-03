@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "confirm"
+title:  "确认提示框"
 categories: js
 tags: component
 author: 熊叩
@@ -42,7 +42,7 @@ author: 熊叩
 </script>
 ```
 
-# 关闭提示框
+# 关闭确认提示框
 
 如果用户点了提示框的确认按钮，一般情况下一执行一个ajax请求，ajax结束后才关闭提示框，所以关闭提示框需要手动自己调用，调用的js如下
 
@@ -50,7 +50,7 @@ author: 熊叩
 akdClose();
 ```
 
-# 提示框效果
+# 确认提示框效果
 
 ![](https://blogpackage.oss-cn-shenzhen.aliyuncs.com/2023-05-03/confirm.png)
 
