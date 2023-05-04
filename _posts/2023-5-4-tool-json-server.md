@@ -26,7 +26,6 @@ author: 熊叩
 
 ```
 npm install -g json-server
-</script>
 ```
 
 # 创建一个 `db.json`的文件
