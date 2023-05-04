@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "json serve"
+title:  "json server"
 categories: tool
 tags: json-serve
 author: 熊叩

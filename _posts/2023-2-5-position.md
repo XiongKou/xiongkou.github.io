@@ -142,7 +142,7 @@ flex 大大简化了布局的代码 , 但是他对于低版本的浏览器支持
             height: 9999px;
             margin-top: 10px;
             margin-bottom: 10px;
-            overflow-y: scroll;
+            overflow-y: auto;
         }
 
         .footer {
