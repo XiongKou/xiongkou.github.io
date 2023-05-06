@@ -45,7 +45,7 @@ author: 熊叩
 
 # CSS
 
-```
+```css
 .mf-status {
 	position: relative;
 	font-style: normal;
