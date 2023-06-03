@@ -139,7 +139,7 @@ flex 大大简化了布局的代码 , 但是他对于低版本的浏览器支持
         .content {
             flex: auto;
             background: #e5e5e5;
-            height: 9999px;
+            height: 100%;
             margin-top: 10px;
             margin-bottom: 10px;
             overflow-y: auto;
