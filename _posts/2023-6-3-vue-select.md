@@ -25,7 +25,7 @@ author: 熊叩
 ```html
 <akd-select v-model="area">
 	<p v-for="item in areaList" :key="item.value" :value="item">
-		{{ item.DeptName }}
+		`{{ item.DeptName }}`
 	</p>
 </akd-select>
 ```
