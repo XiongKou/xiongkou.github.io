@@ -24,7 +24,7 @@ author: 熊叩
 
 ```js
 function getTarget(target, curr, parent) {
-    return function run(t, c) {
+    return function run(t, c) {
         if (!c || !t || t === (parent || document)) {
             return false;
         } else if ((function contrast(t, c) {
