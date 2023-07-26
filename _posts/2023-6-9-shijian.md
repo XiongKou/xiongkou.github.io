@@ -72,7 +72,7 @@ function testEvent(e){
 	}
 	target = getTarget(e.target, "p");
 	if (target) {
-  		...
+		...
 		return;
 	}
 }
