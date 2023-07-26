@@ -25,25 +25,25 @@ author: 熊叩
 ```js
 function getTarget(target, curr, parent) {
     return function run(t, c) {
-        if (!c || !t || t === (parent || document)) {
-            return false;
-        } else if ((function contrast(t, c) {
-            switch (c.slice(0, 1)) {
-                case '.':
-                    return Array.prototype.indexOf.call(t.classList, c.slice(1)) !== -1;
-                case '#':
-                    return t.getAttribute('id') === c.slice(1);
-                default:
-                    return t.nodeName.toLocaleLowerCase() === c.toLocaleLowerCase();
-            }
-        })(t, c)) {
-            return t;
-        } else if (t.hasAttribute && t.hasAttribute('stop')) {
-            return false;
-        } else {
-            return run(t.parentNode, c);
-        }
-    }(target, curr);
+		if (!c || !t || t === (parent || document)) {
+			return false;
+		} else if ((function contrast(t, c) {
+			switch (c.slice(0, 1)) {
+				case '.':
+					return Array.prototype.indexOf.call(t.classList, c.slice(1)) !== -1;
+				case '#':
+					return t.getAttribute('id') === c.slice(1);
+				default:
+					return t.nodeName.toLocaleLowerCase() === c.toLocaleLowerCase();
+			}
+		})(t, c)) {
+			return t;
+		} else if (t.hasAttribute && t.hasAttribute('stop')) {
+			return false;
+		} else {
+			return run(t.parentNode, c);
+		}
+	}(target, curr);
 }
 ```
 
@@ -62,12 +62,12 @@ function getTarget(target, curr, parent) {
 function testEvent(e){
 	let target = getTarget(e.target, ".fa-save");
 	if (target) {
-  		...     
+		...
 		return;
 	}
 	target = getTarget(e.target, "#address");
 	if (target) {
-  		...
+		...
 		return;
 	}
 	target = getTarget(e.target, "p");
