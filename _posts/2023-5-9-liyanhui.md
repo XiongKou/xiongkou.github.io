@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "李炎恢讲义"
+title:  "李炎恢javascript讲义"
 categories: js
 tags: 讲义
 author: 熊叩
